@@ -1,6 +1,9 @@
 import { BOOKS_LOADED } from "./../types"
 const initialState = {
-  newBooks: []
+  books: [
+    { id: "1", title: "Flowers for Algernon", author: "Daniel Keyes" },
+    { id: "2", title: "Dandelion Wine", author: "Ray Bradbury" }
+  ]
 }
 
 const reducer = (state = initialState, action) => {

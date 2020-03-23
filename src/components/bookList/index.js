@@ -1,14 +1,10 @@
 import React from "react"
 import BookItem from "../bookItem"
+import { connect } from "react-redux"
 
-const books = [
-  { id: "1", title: "Flowers for Algernon", author: "Daniel Keyes" },
-  { id: "2", title: "Dandelion Wine", author: "Ray Bradbury" }
-]
-
-export default class BookList extends React.Component {
- 
+class BookList extends React.Component {
   render() {
+    const { books } = this.props
     return (
       <ul>
         {books.map(book => (
@@ -20,3 +16,7 @@ export default class BookList extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({ books: state.books })
+
+export default connect(mapStateToProps)(BookList)
