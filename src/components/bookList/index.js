@@ -27,8 +27,6 @@ class BookList extends React.Component {
 
 const mapStateToProps = ({ books }) => ({ books })
 
-const mapDispatchToProps = { booksLoaded }
-
 export default WithBookServiceContext()(
-  connect(mapStateToProps, mapDispatchToProps)(BookList)
+  connect(mapStateToProps, { booksLoaded })(BookList)
 )
