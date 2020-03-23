@@ -1,22 +1,29 @@
 import React from "react"
 import BookItem from "../bookItem"
 import { connect } from "react-redux"
+import WithBookServiceContext from "../hoc/with-book-service-context"
 
 class BookList extends React.Component {
+  componentDidMount() {
+    const { booksData } = this.props
+    const data = booksData.getBooks()
+    console.log(data)
+  }
   render() {
     const { books } = this.props
+    console.log(books)
     return (
       <ul>
-        {books.map(book => (
+        {/* {books.map(book => (
           <li key={book.id}>
             <BookItem book={book} />
           </li>
-        ))}
+        ))} */}
       </ul>
     )
   }
 }
 
-const mapStateToProps = state => ({ books: state.books })
+const mapStateToProps = ({books}) => ({ books })
 
-export default connect(mapStateToProps)(BookList)
+export default WithBookServiceContext()(connect(mapStateToProps)(BookList))

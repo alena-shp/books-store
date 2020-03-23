@@ -1,5 +1,8 @@
 export default class bookService {
-  getBooks = books => {
-    return books
+  getBooks() {
+    return [
+      { id: "1", title: "Flowers for Algernon", author: "Daniel Keyes" },
+      { id: "2", title: "Dandelion Wine", author: "Ray Bradbury" }
+    ]
   }
 }

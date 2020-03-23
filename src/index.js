@@ -11,10 +11,12 @@ import { BookServiceProvider } from "./components/book-servise-context"
 import ErrorBoundary from "./components/error-boundary/error-boundary"
 import store from "./store"
 
+const booksData = new bookService()
+
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundary>
-      <BookServiceProvider value={bookService}>
+      <BookServiceProvider value={booksData}>
         <Router>
           <App />
         </Router>
