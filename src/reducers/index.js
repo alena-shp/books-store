@@ -1,13 +1,13 @@
 import { BOOKS_LOADED } from "./../types"
 const initialState = {
-  newBooks: []
+  books: []
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case BOOKS_LOADED:
       return {
-        newBooks: action.payload
+        books: action.payload
       }
     default:
       return state
