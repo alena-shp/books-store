@@ -6,10 +6,10 @@ import "./shopHeader.scss"
 const ShopHeader = ({ numItems, priсe }) => {
   return (
     <div className="shop-header">
-      <Link to="" className="shop-header__logo">
+      <Link to="/" className="shop-header__logo">
         ShopBooks
       </Link>
-      <Link to="" className="shop-header__info">
+      <Link to="/cardpage" className="shop-header__info">
         <img src={basketImg} alt="" />
         <span>
           {numItems} items (${priсe})

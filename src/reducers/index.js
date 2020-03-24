@@ -1,4 +1,4 @@
-import { BOOKS_LOADED } from "./../types"
+import { BOOKS_LOADED, BOOK_REQUEST } from "./../types"
 const initialState = {
   books: [],
   loading: true
@@ -6,6 +6,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case BOOK_REQUEST:
+      return {
+        books: [],
+        loading: true
+      }
     case BOOKS_LOADED:
       return {
         books: action.payload,

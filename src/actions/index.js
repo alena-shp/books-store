@@ -1,10 +1,10 @@
-import { BOOKS_LOADED } from "./../types"
+import { BOOKS_LOADED, BOOK_REQUEST } from "./../types"
 
-const booksLoaded = newBooks => {
-  return {
-    type: BOOKS_LOADED,
-    payload: newBooks
-  }
-}
+const booksLoaded = newBooks => ({
+  type: BOOKS_LOADED,
+  payload: newBooks
+})
 
-export { booksLoaded }
+const booksRequest = () => ({ type: BOOK_REQUEST })
+
+export { booksLoaded, booksRequest }

@@ -1,14 +1,15 @@
 import React from "react"
 import BookItem from "../bookItem"
 import { connect } from "react-redux"
-import { booksLoaded } from "./../../actions"
+import { booksLoaded, booksRequest } from "./../../actions"
 import WithBookServiceContext from "../hoc/with-book-service-context"
 import Spinner from "./../spinner"
 import "./bookList.scss"
 
 class BookList extends React.Component {
   componentDidMount() {
-    const { booksData, booksLoaded } = this.props
+    const { booksData, booksLoaded, booksRequest } = this.props
+    booksRequest()
     booksData.getBooks().then(data => {
       booksLoaded(data)
     })
@@ -35,5 +36,5 @@ class BookList extends React.Component {
 const mapStateToProps = ({ books, loading }) => ({ books, loading })
 
 export default WithBookServiceContext()(
-  connect(mapStateToProps, { booksLoaded })(BookList)
+  connect(mapStateToProps, { booksLoaded, booksRequest })(BookList)
 )
