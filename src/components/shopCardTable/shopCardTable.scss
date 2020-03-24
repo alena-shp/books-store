@@ -7,6 +7,15 @@
     color: #5a5a5a;
     font-family: "Lato", sans-serif;
   }
+
+  &__total {
+    font-size: 24px;
+    color: #5a5a5a;
+    font-family: "Lato", sans-serif;
+    align-self: flex-end;
+    margin-top: 2rem;
+    padding-right: 7rem;
+  }
 }
 
 .table {
