@@ -29,15 +29,23 @@
 
     &__btn {
       background-color: #5cbd5d;
-      border-radius: 3px;
+      border-radius: 4px;
+      border: 2px solid #5cbd5d;
       color: white;
       font-size: 16px;
+      font-weight: 700;
       padding: 0.8rem 0.8rem;
       font-family: "Lato", sans-serif;
       text-decoration: none;
       text-align: center;
       text-transform: uppercase;
-      width: 60%;
+      width: 10rem;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: white;
+        color: #5cbd5d;
+      }
     }
   }
 }
