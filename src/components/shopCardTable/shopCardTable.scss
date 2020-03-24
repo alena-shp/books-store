@@ -24,15 +24,19 @@
   border-collapse: collapse;
   text-align: center;
 
+  thead,
+  tbody {
+    width: 100%;
+    padding-left: 1.2rem;
+  }
+  thead {
+    border-top: 1px solid #a1d3a2;
+    border-bottom: 1px solid #a1d3a2;
+  }
   tr {
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 1.2rem;
-  }
-  tr:first-child {
-    border-top: 1px solid #a1d3a2;
-    border-bottom: 1px solid #a1d3a2;
   }
 
   th,
