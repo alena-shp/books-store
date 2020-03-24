@@ -6,7 +6,7 @@ import ShopHeader from "../shopHeader"
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <ShopHeader numItems={3} priсe={150} />
       <Switch>
         <Route path="/" component={HomePage} exact />

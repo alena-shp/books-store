@@ -1,0 +1,54 @@
+.shop-carg-table {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  &__title {
+    font-size: 26px;
+    color: #5a5a5a;
+    font-family: "Lato", sans-serif;
+  }
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+
+  tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1.2rem;
+  }
+  tr:first-child {
+    border-top: 1px solid #a1d3a2;
+    border-bottom: 1px solid #a1d3a2;
+  }
+
+  th,
+  td {
+    width: 20%;
+    padding: 1rem 0;
+    text-align: start;
+  }
+
+  td:last-child {
+    display: flex;
+    align-items: center;
+  }
+  &__btn {
+    background-color: transparent;
+    border: 1px solid #a1d3a2;
+    border-radius: 3px;
+    margin: 0 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+
+    img {
+      width: 25px;
+    }
+  }
+}

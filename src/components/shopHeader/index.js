@@ -1,5 +1,5 @@
 import React from "react"
-import basket from "./../../assets/basket.png"
+import basketImg from "./../../assets/basketImg.png"
 import "./shopHeader.scss"
 
 const ShopHeader = ({ numItems, priсe }) => {
@@ -9,7 +9,7 @@ const ShopHeader = ({ numItems, priсe }) => {
         ShopBooks
       </a>
       <a href="#0" className="shop-header__info">
-        <img src={basket} alt="" />
+        <img src={basketImg} alt="" />
         <span>
           {numItems} items (${priсe})
         </span>
