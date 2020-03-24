@@ -3,6 +3,7 @@ import BookItem from "../bookItem"
 import { connect } from "react-redux"
 import { booksLoaded } from "./../../actions"
 import WithBookServiceContext from "../hoc/with-book-service-context"
+import Spinner from "./../spinner"
 import "./bookList.scss"
 
 class BookList extends React.Component {
@@ -13,7 +14,11 @@ class BookList extends React.Component {
     })
   }
   render() {
-    const { books } = this.props
+    const { books, loading } = this.props
+
+    if (loading) {
+      return <Spinner />
+    }
 
     return (
       <ul className="book-list">
@@ -27,7 +32,7 @@ class BookList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ books }) => ({ books })
+const mapStateToProps = ({ books, loading }) => ({ books, loading })
 
 export default WithBookServiceContext()(
   connect(mapStateToProps, { booksLoaded })(BookList)
