@@ -1,0 +1,11 @@
+.book-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+  }
+}

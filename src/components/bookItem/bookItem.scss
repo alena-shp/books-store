@@ -1,0 +1,43 @@
+.book-item {
+  &-img {
+    width: 160px;
+    height: auto;
+  }
+  &-description {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+
+    &__title {
+      font-size: 34px;
+      color: #5cbd5d;
+      font-family: "Lato", sans-serif;
+      margin-bottom: 1rem;
+    }
+    &__author {
+      font-size: 24px;
+      color: #5a5a5a;
+      font-family: "Lato", sans-serif;
+      margin-bottom: 1.2rem;
+    }
+    &__price {
+      font-size: 38px;
+      color: #5a5a5a;
+      font-family: "Lato", sans-serif;
+      margin-bottom: 2.6rem;
+    }
+
+    &__btn {
+      background-color: #5cbd5d;
+      border-radius: 3px;
+      color: white;
+      font-size: 16px;
+      padding: 0.8rem 0.8rem;
+      font-family: "Lato", sans-serif;
+      text-decoration: none;
+      text-align: center;
+      text-transform: uppercase;
+      width: 60%;
+    }
+  }
+}

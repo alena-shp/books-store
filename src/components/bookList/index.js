@@ -3,6 +3,7 @@ import BookItem from "../bookItem"
 import { connect } from "react-redux"
 import { booksLoaded } from "./../../actions"
 import WithBookServiceContext from "../hoc/with-book-service-context"
+import './bookList.scss'
 
 class BookList extends React.Component {
   componentDidMount() {
@@ -14,9 +15,9 @@ class BookList extends React.Component {
     const { books } = this.props
 
     return (
-      <ul>
+      <ul className="book-list">
         {books.map(book => (
-          <li key={book.id}>
+          <li key={book.id} className="book-list__item">
             <BookItem book={book} />
           </li>
         ))}
