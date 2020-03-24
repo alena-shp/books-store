@@ -7,9 +7,9 @@ import "./bookList.scss"
 
 class BookList extends React.Component {
   componentDidMount() {
-    const { booksData } = this.props
+    const { booksData, booksLoaded } = this.props
     booksData.getBooks().then(data => {
-      this.props.booksLoaded(data)
+      booksLoaded(data)
     })
   }
   render() {
