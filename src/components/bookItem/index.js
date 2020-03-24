@@ -1,5 +1,6 @@
 import React from "react"
 import "./bookItem.scss"
+import { Link } from "react-router-dom"
 
 const BookItem = ({ book }) => {
   const { title, author, price, img } = book
@@ -10,7 +11,9 @@ const BookItem = ({ book }) => {
         <span className="book-item-description__title">{title}</span>
         <span className="book-item-description__author">{author}</span>
         <span className="book-item-description__price">${price}</span>
-        <a href="0#" className="book-item-description__btn">Add to cart</a>
+        <Link to="" href="0#" className="book-item-description__btn">
+          Add to cart
+        </Link>
       </div>
     </>
   )
