@@ -1,13 +1,17 @@
-import { BOOKS_LOADED, BOOK_REQUEST, BOOKS_ERROR } from "./../types"
+import {
+  FETCH_BOOKS_REQUEST,
+  FETCH_BOOKS_SUCCESS,
+  FETCH_BOOKS_FAILURE
+} from "./../types"
+
+const booksRequest = () => ({ type: FETCH_BOOKS_REQUEST })
 
 const booksLoaded = newBooks => ({
-  type: BOOKS_LOADED,
+  type: FETCH_BOOKS_SUCCESS,
   payload: newBooks
 })
 
-const booksRequest = () => ({ type: BOOK_REQUEST })
-
-const booksError = error => ({ type: BOOKS_ERROR, payload: error })
+const booksError = error => ({ type: FETCH_BOOKS_FAILURE, payload: error })
 
 const fetchBooksData = (dispatch, booksData) => () => {
   dispatch(booksRequest())
