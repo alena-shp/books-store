@@ -1,7 +1,7 @@
 import React from "react"
 import BookItem from "../bookItem"
 import { connect } from "react-redux"
-import { booksLoaded, booksRequest, booksError } from "./../../actions"
+import { fetchBooksData } from "./../../actions"
 import WithBookServiceContext from "../hoc/with-book-service-context"
 import Spinner from "./../spinner"
 import "./bookList.scss"
@@ -39,15 +39,9 @@ const mapStateToProps = ({ books, loading, error }) => ({
   error
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, {booksData}) => {
   return {
-    fetchBooksData: () => {
-      dispatch(booksRequest())
-      ownProps.booksData
-        .getBooks()
-        .then(data => dispatch(booksLoaded(data)))
-        .catch(error => dispatch(booksError(error)))
-    }
+    fetchBooksData: fetchBooksData(dispatch, booksData)
   }
 }
 
