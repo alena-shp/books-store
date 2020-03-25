@@ -9,12 +9,7 @@ import ErrorIndicator from "../error-indicator/error-indicator"
 
 class BookList extends React.Component {
   componentDidMount() {
-    const { booksData, booksLoaded, booksRequest, booksError } = this.props
-    booksRequest()
-    booksData
-      .getBooks()
-      .then(data => booksLoaded(data))
-      .catch(error => booksError(error))
+    this.props.fetchBooksData()
   }
   render() {
     const { books, loading, error } = this.props
@@ -44,6 +39,18 @@ const mapStateToProps = ({ books, loading, error }) => ({
   error
 })
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchBooksData: () => {
+      dispatch(booksRequest())
+      ownProps.booksData
+        .getBooks()
+        .then(data => dispatch(booksLoaded(data)))
+        .catch(error => dispatch(booksError(error)))
+    }
+  }
+}
+
 export default WithBookServiceContext()(
-  connect(mapStateToProps, { booksLoaded, booksRequest, booksError })(BookList)
+  connect(mapStateToProps, mapDispatchToProps)(BookList)
 )
