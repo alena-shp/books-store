@@ -1,8 +1,7 @@
 import React from "react"
 import "./bookItem.scss"
-import { Link } from "react-router-dom"
 
-const BookItem = ({ book }) => {
+const BookItem = ({ book, onAddCartBook }) => {
   const { title, author, price, img } = book
   return (
     <>
@@ -11,9 +10,9 @@ const BookItem = ({ book }) => {
         <span className="book-item-description__title">{title}</span>
         <span className="book-item-description__author">{author}</span>
         <span className="book-item-description__price">${price}</span>
-        <Link to="" href="0#" className="book-item-description__btn">
+        <button onClick={onAddCartBook} className="book-item-description__btn">
           Add to cart
-        </Link>
+        </button>
       </div>
     </>
   )
