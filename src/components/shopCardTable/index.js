@@ -1,10 +1,17 @@
 import React from "react"
+import { connect } from "react-redux"
+import "./shopCardTable.scss"
 import deleteImg from "./../../assets/deleteImg.png"
 import plusImg from "./../../assets/plusImg.png"
 import minusImg from "./../../assets/minusImg.png"
-import "./shopCardTable.scss"
 
-const ShopCardTable = () => {
+const ShopCardTable = ({
+  cartItems,
+  orderTotal,
+  onIncrease,
+  onDecrease,
+  onDelete
+}) => {
   return (
     <div className="shop-carg-table">
       <h3 className="shop-carg-table__title">Your Order</h3>
@@ -14,32 +21,42 @@ const ShopCardTable = () => {
             <th>#</th>
             <th>Item</th>
             <th>Count</th>
-            <th>Price</th>
+            <th>Total</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Dandelion Wine</td>
-            <td>1</td>
-            <td>$20</td>
-            <td>
-              <button className="table__btn">
-                <img src={minusImg} alt="" />
-              </button>
-              <button className="table__btn">
-                <img src={plusImg} alt="" />
-              </button>
-              <button className="table__btn">
-                <img src={deleteImg} alt="" />
-              </button>
-            </td>
-          </tr>
+          {cartItems.map((item, idx) => {
+            const { id, title, count, total } = item
+            return (
+              <tr key={id}>
+                <td>{idx}</td>
+                <td>{title}</td>
+                <td>{count}</td>
+                <td>${total}</td>
+                <td>
+                  <button onClick={() => onIncrease(id)} className="table__btn">
+                    <img src={minusImg} alt="" />
+                  </button>
+                  <button onClick={() => onDecrease(id)} className="table__btn">
+                    <img src={plusImg} alt="" />
+                  </button>
+                  <button onClick={() => onDelete(id)} className="table__btn">
+                    <img src={deleteImg} alt="" />
+                  </button>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
-      <p className="shop-carg-table__total">Total: $200</p>
+      <p className="shop-carg-table__total">Total: ${orderTotal}</p>
     </div>
   )
 }
-export default ShopCardTable
+
+const mapStateToProps = ({ cartItems, orderTotal }) => ({
+  cartItems,
+  orderTotal
+})
+export default connect(mapStateToProps)(ShopCardTable)
