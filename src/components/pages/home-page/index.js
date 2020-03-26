@@ -1,12 +1,12 @@
 import React from "react"
-import BookList from "../../bookList"
 import ShopCardTable from "../../shopCardTable"
-import './homePage.scss'
+import "./homePage.scss"
+import BookListContainer from "./../../../containers/bookListContainer"
 
 const HomePage = () => {
   return (
     <div className="home-page">
-      <BookList />
+      <BookListContainer />
       <ShopCardTable />
     </div>
   )
