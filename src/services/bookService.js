@@ -4,7 +4,7 @@ export default class bookService {
       id: "1",
       title: "Flowers for Algernon",
       author: "Daniel Keyes",
-      price: "24",
+      price: 24,
       img:
         "https://images-na.ssl-images-amazon.com/images/I/41gvkhScVBL._SX315_BO1,204,203,200_.jpg"
     },
@@ -12,7 +12,7 @@ export default class bookService {
       id: "2",
       title: "Dandelion Wine",
       author: "Ray Bradbury",
-      price: "30",
+      price: 30,
       img:
         "https://images-na.ssl-images-amazon.com/images/I/51LVKTpT0bL._SY346_.jpg"
     }

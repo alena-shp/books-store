@@ -39,15 +39,38 @@ const reducer = (state = initialState, action) => {
     case BOOK_ADD_CART:
       const bookId = action.payload
       const book = state.books.find(book => book.id === bookId)
-      const newCartItem = {
-        id: book.id,
-        title: book.title,
-        count: 1,
-        total: book.price
+      const itemIndex = state.cartItems.findIndex(item => item.id === bookId)
+      const item = state.cartItems[itemIndex]
+
+      let newCartItem
+      if (item) {
+        newCartItem = {
+          ...item,
+          count: item.count + 1,
+          total: item.total + book.price
+        }
+      } else {
+        newCartItem = {
+          id: book.id,
+          title: book.title,
+          count: 1,
+          total: book.price
+        }
       }
-      return {
-        ...state,
-        cartItems: [...state.cartItems, newCartItem]
+      if (itemIndex < 0) {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, newCartItem]
+        }
+      } else {
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems.slice(0, itemIndex),
+            newCartItem,
+            ...state.cartItems.slice(itemIndex + 1)
+          ]
+        }
       }
 
     default:

@@ -30,7 +30,7 @@ const ShopCardTable = ({
             const { id, title, count, total } = item
             return (
               <tr key={id}>
-                <td>{idx}</td>
+                <td>{idx + 1}</td>
                 <td>{title}</td>
                 <td>{count}</td>
                 <td>${total}</td>
