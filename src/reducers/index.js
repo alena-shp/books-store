@@ -12,6 +12,24 @@ const initialState = {
   orderTotal: 100
 }
 
+const updateCartItems = (item, newItem, index) =>
+  index === -1
+    ? [...item, newItem]
+    : [...item.slice(0, index), newItem, ...item.slice(index + 1)]
+
+const updateItem = (book, item = {}) => {
+  console.log("book", book)
+  console.log("item", item)
+  const { id = book.id, title = book.title, count = 0, total = 0 } = item
+
+  return {
+    id,
+    title,
+    count: count + 1,
+    total: total + book.price
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BOOKS_REQUEST:
@@ -41,36 +59,10 @@ const reducer = (state = initialState, action) => {
       const book = state.books.find(book => book.id === bookId)
       const itemIndex = state.cartItems.findIndex(item => item.id === bookId)
       const item = state.cartItems[itemIndex]
-
-      let newCartItem
-      if (item) {
-        newCartItem = {
-          ...item,
-          count: item.count + 1,
-          total: item.total + book.price
-        }
-      } else {
-        newCartItem = {
-          id: book.id,
-          title: book.title,
-          count: 1,
-          total: book.price
-        }
-      }
-      if (itemIndex < 0) {
-        return {
-          ...state,
-          cartItems: [...state.cartItems, newCartItem]
-        }
-      } else {
-        return {
-          ...state,
-          cartItems: [
-            ...state.cartItems.slice(0, itemIndex),
-            newCartItem,
-            ...state.cartItems.slice(itemIndex + 1)
-          ]
-        }
+      const newItem = updateItem(book, item)
+      return {
+        ...state,
+        cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
       }
 
     default:
