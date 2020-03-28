@@ -22,6 +22,6 @@ const fetchBooksData = (dispatch, booksData) => () => {
     .catch(error => dispatch(booksError(error)))
 }
 
-const bookAddCart = bookId => ({type: BOOK_ADD_CART, payload: bookId})
+const bookAddCart = bookId => ({ type: BOOK_ADD_CART, payload: bookId })
 
 export { fetchBooksData, bookAddCart }

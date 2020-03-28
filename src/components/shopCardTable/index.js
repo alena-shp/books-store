@@ -4,6 +4,7 @@ import "./shopCardTable.scss"
 import deleteImg from "./../../assets/deleteImg.png"
 import plusImg from "./../../assets/plusImg.png"
 import minusImg from "./../../assets/minusImg.png"
+import { bookAddCart } from "./../../actions"
 
 const ShopCardTable = ({
   cartItems,
@@ -35,10 +36,10 @@ const ShopCardTable = ({
                 <td>{count}</td>
                 <td>${total}</td>
                 <td>
-                  <button onClick={() => onIncrease(id)} className="table__btn">
+                  <button onClick={() => onDecrease(id)} className="table__btn">
                     <img src={minusImg} alt="" />
                   </button>
-                  <button onClick={() => onDecrease(id)} className="table__btn">
+                  <button onClick={() => onIncrease(id)} className="table__btn">
                     <img src={plusImg} alt="" />
                   </button>
                   <button onClick={() => onDelete(id)} className="table__btn">
@@ -59,4 +60,10 @@ const mapStateToProps = ({ cartItems, orderTotal }) => ({
   cartItems,
   orderTotal
 })
-export default connect(mapStateToProps)(ShopCardTable)
+
+const mapDispatchToProps = {
+  // onDecrease: bookAddCart,
+  onIncrease: bookAddCart
+  // onDelete: bookAddCart
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ShopCardTable)
