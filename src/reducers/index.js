@@ -97,6 +97,19 @@ const reducer = (state = initialState, action) => {
         ]
       }
 
+    case ALL_BOOKS_REMOVE_CART:
+      const deleteId = action.payload
+      const itemDeleteId = state.cartItems.findIndex(
+        item => item.id === deleteId
+      )
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems.slice(0, itemDeleteId),
+          ...state.cartItems.slice(itemDeleteId + 1)
+        ]
+      }
+
     default:
       return state
   }
