@@ -72,21 +72,22 @@ const reducer = (state = initialState, action) => {
         item => item.id === bookIdRemove
       )
       const itemRemove = state.cartItems[itemIndexRemove]
-      const newItemRemove = {
-        ...itemRemove,
-        count: itemRemove.count - 1,
-        total: itemRemove.total - bookRemove.price
-      }
 
-      if (newItemRemove.count === 0) {
-        return {
-          ...state,
-          cartItems: [
-            ...state.cartItems.slice(0, itemIndexRemove),
-            ...state.cartItems.slice(itemIndexRemove + 1)
-          ]
+      let newItemRemove
+      if (itemRemove.count === 0) {
+        newItemRemove = {
+          ...itemRemove,
+          count: 0,
+          total: 0
+        }
+      } else {
+        newItemRemove = {
+          ...itemRemove,
+          count: itemRemove.count - 1,
+          total: itemRemove.total - bookRemove.price
         }
       }
+
       return {
         ...state,
         cartItems: [
