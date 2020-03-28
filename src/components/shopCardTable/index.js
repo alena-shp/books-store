@@ -4,7 +4,7 @@ import "./shopCardTable.scss"
 import deleteImg from "./../../assets/deleteImg.png"
 import plusImg from "./../../assets/plusImg.png"
 import minusImg from "./../../assets/minusImg.png"
-import { bookAddCart } from "./../../actions"
+import { bookAddCart, bookRemoveCart } from "./../../actions"
 
 const ShopCardTable = ({
   cartItems,
@@ -62,7 +62,7 @@ const mapStateToProps = ({ cartItems, orderTotal }) => ({
 })
 
 const mapDispatchToProps = {
-  // onDecrease: bookAddCart,
+  onDecrease: bookRemoveCart,
   onIncrease: bookAddCart
   // onDelete: bookAddCart
 }

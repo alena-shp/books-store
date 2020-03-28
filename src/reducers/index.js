@@ -2,7 +2,9 @@ import {
   FETCH_BOOKS_REQUEST,
   FETCH_BOOKS_SUCCESS,
   FETCH_BOOKS_FAILURE,
-  BOOK_ADD_CART
+  BOOK_ADD_CART,
+  BOOK_REMOVE_CART,
+  ALL_BOOKS_REMOVE_CART
 } from "./../types"
 const initialState = {
   books: [],
@@ -61,6 +63,37 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
+      }
+
+    case BOOK_REMOVE_CART:
+      const bookIdRemove = action.payload
+      const bookRemove = state.books.find(book => book.id === bookIdRemove)
+      const itemIndexRemove = state.cartItems.findIndex(
+        item => item.id === bookIdRemove
+      )
+      const itemRemove = state.cartItems[itemIndexRemove]
+      const newItemRemove = {
+        ...itemRemove,
+        count: itemRemove.count - 1,
+        total: itemRemove.total - bookRemove.price
+      }
+
+      if (newItemRemove.count === 0) {
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems.slice(0, itemIndexRemove),
+            ...state.cartItems.slice(itemIndexRemove + 1)
+          ]
+        }
+      }
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems.slice(0, itemIndexRemove),
+          newItemRemove,
+          ...state.cartItems.slice(itemIndexRemove + 1)
+        ]
       }
 
     default:
