@@ -14,12 +14,19 @@ const initialState = {
   orderTotal: 100
 }
 
-const updateCartItems = (item, newItem, index) =>
-  index === -1
+const updateCartItems = (item, newItem, index) => {
+
+  if (newItem.count === 0) {
+    return [
+      ...item.slice(0, index), ...item.slice(index + 1)
+    ]
+  }
+  return index === -1
     ? [...item, newItem]
     : [...item.slice(0, index), newItem, ...item.slice(index + 1)]
-
+}
 const updateItem = (book, item = {}, amount) => {
+
   const { id = book.id, title = book.title, count = 0, total = 0 } = item
 
   return {
