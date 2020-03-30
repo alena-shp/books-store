@@ -70,36 +70,7 @@ const reducer = (state = initialState, action) => {
       return updateOrder(state, action.payload, 1)
 
     case BOOK_REMOVE_CART:
-      const bookIdRemove = action.payload
-      const bookRemove = state.books.find(book => book.id === bookIdRemove)
-      const itemIndexRemove = state.cartItems.findIndex(
-        item => item.id === bookIdRemove
-      )
-      const itemRemove = state.cartItems[itemIndexRemove]
-
-      let newItemRemove
-      if (itemRemove.count === 0) {
-        newItemRemove = {
-          ...itemRemove,
-          count: 0,
-          total: 0
-        }
-      } else {
-        newItemRemove = {
-          ...itemRemove,
-          count: itemRemove.count - 1,
-          total: itemRemove.total - bookRemove.price
-        }
-      }
-
-      return {
-        ...state,
-        cartItems: [
-          ...state.cartItems.slice(0, itemIndexRemove),
-          newItemRemove,
-          ...state.cartItems.slice(itemIndexRemove + 1)
-        ]
-      }
+      return updateOrder(state, action.payload, -1)
 
     case ALL_BOOKS_REMOVE_CART:
       const deleteId = action.payload
