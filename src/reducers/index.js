@@ -15,25 +15,22 @@ const initialState = {
 }
 
 const updateCartItems = (item, newItem, index) => {
-
   if (newItem.count === 0) {
-    return [
-      ...item.slice(0, index), ...item.slice(index + 1)
-    ]
+    return [...item.slice(0, index), ...item.slice(index + 1)]
   }
   return index === -1
     ? [...item, newItem]
     : [...item.slice(0, index), newItem, ...item.slice(index + 1)]
 }
-const updateItem = (book, item = {}, amount) => {
 
+const updateItem = (book, item = {}, amount) => {
   const { id = book.id, title = book.title, count = 0, total = 0 } = item
 
   return {
     id,
     title,
     count: count + amount,
-    total: total + amount*book.price
+    total: total + amount * book.price
   }
 }
 
@@ -80,18 +77,9 @@ const reducer = (state = initialState, action) => {
       return updateOrder(state, action.payload, -1)
 
     case ALL_BOOKS_REMOVE_CART:
-      const deleteId = action.payload
-      const itemDeleteId = state.cartItems.findIndex(
-        item => item.id === deleteId
-      )
-      return {
-        ...state,
-        cartItems: [
-          ...state.cartItems.slice(0, itemDeleteId),
-          ...state.cartItems.slice(itemDeleteId + 1)
-        ]
-      }
-
+      const removeId = action.payload
+      const itemRemove = state.cartItems.find(({ id }) => removeId)
+      return updateOrder(state, action.payload, -itemRemove.count)
     default:
       return state
   }
