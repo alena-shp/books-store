@@ -6,11 +6,16 @@ import basketImg from "./../../assets/basketImg.png"
 
 const ShopHeader = ({ cartItems }) => {
   let countCart
+  let totalCart
+
   if (cartItems.length === 0) {
+    totalCart = 0
     countCart = 0
   } else {
     const count = cartItems.map(item => item.count)
+    const total = cartItems.map(item => item.total)
     countCart = count.length === 1 ? count : count.reduce((a, b) => a + b)
+    totalCart = total.length === 1 ? total : total.reduce((a, b) => a + b)
   }
 
   return (
@@ -20,7 +25,9 @@ const ShopHeader = ({ cartItems }) => {
       </Link>
       <Link to="/cardpage" className="shop-header__info">
         <img src={basketImg} alt="" />
-        <span>{countCart} items ($)</span>
+        <span>
+          {countCart} items (${totalCart})
+        </span>
       </Link>
     </div>
   )
