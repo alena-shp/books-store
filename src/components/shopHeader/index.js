@@ -5,17 +5,13 @@ import "./shopHeader.scss"
 import basketImg from "./../../assets/basketImg.png"
 
 const ShopHeader = ({ cartItems }) => {
-  console.log(cartItems)
-
-  let sum
+  let countCart
   if (cartItems.length === 0) {
-    sum = 0
+    countCart = 0
   } else {
-    let total = cartItems.map(item => item.count)
-    sum = total.length === 1 ? total : total.reduce((a, b) => a + b)
-    
+    const count = cartItems.map(item => item.count)
+    countCart = count.length === 1 ? count : count.reduce((a, b) => a + b)
   }
-  console.log(sum)
 
   return (
     <div className="shop-header">
@@ -24,7 +20,7 @@ const ShopHeader = ({ cartItems }) => {
       </Link>
       <Link to="/cardpage" className="shop-header__info">
         <img src={basketImg} alt="" />
-        <span>{sum} items ($)</span>
+        <span>{countCart} items ($)</span>
       </Link>
     </div>
   )
