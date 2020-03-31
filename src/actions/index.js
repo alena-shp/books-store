@@ -26,6 +26,9 @@ const fetchBooksData = (dispatch, booksData) => () => {
 
 const bookAddCart = bookId => ({ type: BOOK_ADD_CART, payload: bookId })
 const bookRemoveCart = bookId => ({ type: BOOK_REMOVE_CART, payload: bookId })
-const allBooksRemoveCart = bookId => ({ type: ALL_BOOKS_REMOVE_CART, payload: bookId })
+const allBooksRemoveCart = bookId => ({
+  type: ALL_BOOKS_REMOVE_CART,
+  payload: bookId
+})
 
-export { fetchBooksData, bookAddCart, bookRemoveCart, allBooksRemoveCart}
+export { fetchBooksData, bookAddCart, bookRemoveCart, allBooksRemoveCart }
